@@ -4,7 +4,7 @@
     "id": "consolas-multivaluada-7-nodos",
     "titulo": "Ejercicio 7: Venta de videojuegos en consolas actuales (7 nodos, Pl tri-valuada)",
     "descripcion": "Un estudio analiza lanzamientos en PlayStation 5, Xbox Series X|S y Nintendo Switch 2. La variable Plataforma (Pl) es discreta multivaluada con 3 estados.",
-    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "autor": "Leonardo Soria Raya",
     "dominio": "Industria de Videojuegos"
   },
   "nodos": [
