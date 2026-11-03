@@ -33,8 +33,7 @@ El sistema implementa con rigurosa fidelidad matemática el algoritmo de **Elimi
 La aplicación está configurada con rutas relativas (`base: './'`) y se compila como un sitio estático puro optimizado para alojarse en **GitHub Pages**. El despliegue se ejecuta de manera automatizada mediante el flujo de trabajo de integración continua de GitHub Actions (`.github/workflows/despliegue.yml`) tras cada confirmación en la rama `main`.
 
 > 🌐 **Despliegue Público Oficial en GitHub Pages:**  
-> [https://moisesmorenoumsnh.github.io/Proyecto-Integrador/]([https://moisesmorenoumsnh.github.io/Proyecto-Integrador/])  
-> *(La URL definitiva se genera automáticamente al activar GitHub Pages en los ajustes del repositorio).*
+> [https://moisesmorenoumsnh.github.io/Proyecto-Integrador/](https://moisesmorenoumsnh.github.io/Proyecto-Integrador/)
 
 ---
 
