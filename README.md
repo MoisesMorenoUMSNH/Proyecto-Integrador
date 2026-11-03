@@ -53,7 +53,7 @@ Todas las tareas de desarrollo y compilación para producción se gestionan a tr
 
 ```bash
 # 1. Clonar el repositorio y acceder a la raíz del proyecto
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/MoisesMorenoUMSNH/Proyecto-Integrador
 cd Proyecto-Integrador
 
 # 2. Instalar dependencias exactas usando el bloqueo determinista de pnpm
