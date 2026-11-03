@@ -1,1 +1,141 @@
 
+{
+  "versionEsquema": "1.0",
+  "metadatos": {
+    "id": "videojuegos-5-nodos",
+    "titulo": "Ejercicio 3: Venta de videojuegos en consolas (5 nodos)",
+    "descripcion": "Una editora analiza un lanzamiento en tiendas digitales de consola. Las ventas de la primera semana dependen de descuento, reseñas y tráiler viral; las ventas altas impulsan la entrada al Top 10.",
+    "autor": "Cesar Ambris Salguero",
+    "dominio": "Industria de Videojuegos"
+  },
+  "nodos": [
+    {
+      "id": "D",
+      "nombre": "Descuento",
+      "descripcion": "El juego tiene descuento en la tienda digital",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 100, "y": 80 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.3, "0": 0.7 }
+        }
+      ]
+    },
+    {
+      "id": "R",
+      "nombre": "Reseñas",
+      "descripcion": "Reseñas buenas (Metacritic de 85 o más)",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 340, "y": 80 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.4, "0": 0.6 }
+        }
+      ]
+    },
+    {
+      "id": "T",
+      "nombre": "Tráiler viral",
+      "descripcion": "El tráiler promocional se vuelve viral",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 580, "y": 80 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.25, "0": 0.75 }
+        }
+      ]
+    },
+    {
+      "id": "V",
+      "nombre": "Ventas altas",
+      "descripcion": "Ventas altas en la primera semana",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["D", "R", "T"],
+      "posicion": { "x": 340, "y": 240 },
+      "cpt": [
+        {
+          "cuando": { "D": "1", "R": "1", "T": "1" },
+          "probabilidades": { "1": 0.95, "0": 0.05 }
+        },
+        {
+          "cuando": { "D": "1", "R": "1", "T": "0" },
+          "probabilidades": { "1": 0.8, "0": 0.2 }
+        },
+        {
+          "cuando": { "D": "1", "R": "0", "T": "1" },
+          "probabilidades": { "1": 0.7, "0": 0.3 }
+        },
+        {
+          "cuando": { "D": "1", "R": "0", "T": "0" },
+          "probabilidades": { "1": 0.35, "0": 0.65 }
+        },
+        {
+          "cuando": { "D": "0", "R": "1", "T": "1" },
+          "probabilidades": { "1": 0.85, "0": 0.15 }
+        },
+        {
+          "cuando": { "D": "0", "R": "1", "T": "0" },
+          "probabilidades": { "1": 0.55, "0": 0.45 }
+        },
+        {
+          "cuando": { "D": "0", "R": "0", "T": "1" },
+          "probabilidades": { "1": 0.45, "0": 0.55 }
+        },
+        {
+          "cuando": { "D": "0", "R": "0", "T": "0" },
+          "probabilidades": { "1": 0.1, "0": 0.9 }
+        }
+      ]
+    },
+    {
+      "id": "K",
+      "nombre": "Top 10",
+      "descripcion": "El juego entra al Top 10 de la tienda",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["V"],
+      "posicion": { "x": 340, "y": 400 },
+      "cpt": [
+        {
+          "cuando": { "V": "1" },
+          "probabilidades": { "1": 0.9, "0": 0.1 }
+        },
+        {
+          "cuando": { "V": "0" },
+          "probabilidades": { "1": 0.15, "0": 0.85 }
+        }
+      ]
+    }
+  ],
+  "consultasPredefinidas": [
+    {
+      "id": "ex3-a-diagnostica",
+      "etiqueta": "P(R | K=1) — Probabilidad de buenas reseñas dado Top 10",
+      "descripcion": "El juego entró al Top 10 (K=1). ¿Qué tan probable es que tenga buenas reseñas?",
+      "variablesConsulta": ["R"],
+      "evidencia": { "K": "1" },
+      "ordenSugerido": ["V", "D", "T"],
+      "posteriorEsperada": { "1": 0.5616, "0": 0.4384 }
+    },
+    {
+      "id": "ex3-b-intercausal",
+      "etiqueta": "P(R | K=1, D=1) — Explicación alternativa (explaining-away) con descuento",
+      "descripcion": "Además de estar en el Top 10, sabemos que el juego tenía descuento (D=1). ¿Cómo disminuye la probabilidad de buenas reseñas?",
+      "variablesConsulta": ["R"],
+      "evidencia": { "K": "1", "D": "1" },
+      "ordenSugerido": ["V", "T"],
+      "posteriorEsperada": { "1": 0.5204, "0": 0.4796 }
+    }
+  ]
+}
+
