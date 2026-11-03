@@ -4,7 +4,7 @@
     "id": "ransomware-6-nodos",
     "titulo": "Ejercicio 5: Ciberseguridad — Infección por Ransomware (6 nodos)",
     "descripcion": "Un equipo de respuesta a incidentes modela una infección por ransomware con dos causas (phishing y parches atrasados), dos señales directas (cifrado y tráfico C2) y pérdida de datos derivada del cifrado.",
-    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "autor": "Cesar Ambris Salguero ",
     "dominio": "Ciberseguridad"
   },
   "nodos": [
