@@ -1,3 +1,4 @@
+// Panel editor desarrollado por Cesar Ambris Salguero 
 import {
   CheckCircle2,
   CircleAlert,

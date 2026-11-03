@@ -1,3 +1,4 @@
+// barra superior desarrollado por Cesar Ambris Salguero 
 import {
   Download,
   FilePlus2,
@@ -193,3 +194,4 @@ export function BarraSuperior() {
     </header>
   );
 }
+
