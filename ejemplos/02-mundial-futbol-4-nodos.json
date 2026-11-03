@@ -4,7 +4,7 @@
     "id": "mundial-futbol-4-nodos",
     "titulo": "Ejercicio 2: Mundial de Futbol (4 nodos)",
     "descripcion": "Un analista deportivo modela el resultado de un partido del Mundial. La lesión del jugador estrella afecta la forma del equipo, y el resultado depende de la buena forma y de la fuerza del rival.",
-    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "autor": "Moises Moreno Cortez",
     "dominio": "Deportes"
   },
   "nodos": [
