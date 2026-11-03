@@ -98,4 +98,173 @@
     {
       "id": "Df",
       "nombre": "Defensa",
-... (171 líneas restantes)
+      "descripcion": "Defensa sólida durante el partido",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["Rk", "Pf"],
+      "posicion": { "x": 420, "y": 200 },
+      "cpt": [
+        {
+          "cuando": { "Rk": "1", "Pf": "1" },
+          "probabilidades": { "1": 0.85, "0": 0.15 }
+        },
+        {
+          "cuando": { "Rk": "1", "Pf": "0" },
+          "probabilidades": { "1": 0.6, "0": 0.4 }
+        },
+        {
+          "cuando": { "Rk": "0", "Pf": "1" },
+          "probabilidades": { "1": 0.6, "0": 0.4 }
+        },
+        {
+          "cuando": { "Rk": "0", "Pf": "0" },
+          "probabilidades": { "1": 0.3, "0": 0.7 }
+        }
+      ]
+    },
+    {
+      "id": "G",
+      "nombre": "Gana octavos",
+      "descripcion": "Gana el partido de octavos de final",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["Of", "Df", "Cl"],
+      "posicion": { "x": 380, "y": 360 },
+      "cpt": [
+        {
+          "cuando": { "Of": "1", "Df": "1", "Cl": "1" },
+          "probabilidades": { "1": 0.7, "0": 0.3 }
+        },
+        {
+          "cuando": { "Of": "1", "Df": "1", "Cl": "0" },
+          "probabilidades": { "1": 0.85, "0": 0.15 }
+        },
+        {
+          "cuando": { "Of": "1", "Df": "0", "Cl": "1" },
+          "probabilidades": { "1": 0.45, "0": 0.55 }
+        },
+        {
+          "cuando": { "Of": "1", "Df": "0", "Cl": "0" },
+          "probabilidades": { "1": 0.6, "0": 0.4 }
+        },
+        {
+          "cuando": { "Of": "0", "Df": "1", "Cl": "1" },
+          "probabilidades": { "1": 0.35, "0": 0.65 }
+        },
+        {
+          "cuando": { "Of": "0", "Df": "1", "Cl": "0" },
+          "probabilidades": { "1": 0.5, "0": 0.5 }
+        },
+        {
+          "cuando": { "Of": "0", "Df": "0", "Cl": "1" },
+          "probabilidades": { "1": 0.1, "0": 0.9 }
+        },
+        {
+          "cuando": { "Of": "0", "Df": "0", "Cl": "0" },
+          "probabilidades": { "1": 0.2, "0": 0.8 }
+        }
+      ]
+    },
+    {
+      "id": "Go",
+      "nombre": "2+ goles",
+      "descripcion": "El equipo anota 2 goles o más",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["Of"],
+      "posicion": { "x": 140, "y": 360 },
+      "cpt": [
+        {
+          "cuando": { "Of": "1" },
+          "probabilidades": { "1": 0.65, "0": 0.35 }
+        },
+        {
+          "cuando": { "Of": "0" },
+          "probabilidades": { "1": 0.15, "0": 0.85 }
+        }
+      ]
+    },
+    {
+      "id": "Ta",
+      "nombre": "Tarjeta roja",
+      "descripcion": "El equipo recibe una tarjeta roja",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["Df", "Cl"],
+      "posicion": { "x": 640, "y": 360 },
+      "cpt": [
+        {
+          "cuando": { "Df": "1", "Cl": "1" },
+          "probabilidades": { "1": 0.1, "0": 0.9 }
+        },
+        {
+          "cuando": { "Df": "1", "Cl": "0" },
+          "probabilidades": { "1": 0.05, "0": 0.95 }
+        },
+        {
+          "cuando": { "Df": "0", "Cl": "1" },
+          "probabilidades": { "1": 0.3, "0": 0.7 }
+        },
+        {
+          "cuando": { "Df": "0", "Cl": "0" },
+          "probabilidades": { "1": 0.2, "0": 0.8 }
+        }
+      ]
+    },
+    {
+      "id": "Cm",
+      "nombre": "Camisetas",
+      "descripcion": "Ventas récord de camisetas tras el partido",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["G", "Go"],
+      "posicion": { "x": 260, "y": 510 },
+      "cpt": [
+        {
+          "cuando": { "G": "1", "Go": "1" },
+          "probabilidades": { "1": 0.9, "0": 0.1 }
+        },
+        {
+          "cuando": { "G": "1", "Go": "0" },
+          "probabilidades": { "1": 0.7, "0": 0.3 }
+        },
+        {
+          "cuando": { "G": "0", "Go": "1" },
+          "probabilidades": { "1": 0.35, "0": 0.65 }
+        },
+        {
+          "cuando": { "G": "0", "Go": "0" },
+          "probabilidades": { "1": 0.1, "0": 0.9 }
+        }
+      ]
+    }
+  ],
+  "consultasPredefinidas": [
+    {
+      "id": "ex10-a-diagnostica-multiple",
+      "etiqueta": "P(Le | Cm=1, Go=0, Ta=0) — Diagnóstico con evidencia en conflicto",
+      "descripcion": "Hubo ventas récord de camisetas, pero el equipo no anotó 2 goles y no hubo tarjeta roja. ¿Qué tan probable es que el delantero estuviera lesionado?",
+      "variablesConsulta": ["Le"],
+      "evidencia": { "Cm": "1", "Go": "0", "Ta": "0" },
+      "ordenSugerido": ["Pf", "Cl", "G", "Df", "Rk", "Of"],
+      "posteriorEsperada": { "1": 0.2149, "0": 0.7851 }
+    },
+    {
+      "id": "ex10-b-predictiva-con-poda",
+      "etiqueta": "P(G | Le=1, Cl=1) — Predicción con poda de {Go, Ta, Cm}",
+      "descripcion": "Antes del partido se sabe que el delantero está lesionado y se jugará en clima adverso. Los descendientes {Go, Ta, Cm} se podan.",
+      "variablesConsulta": ["G"],
+      "evidencia": { "Le": "1", "Cl": "1" },
+      "ordenSugerido": ["Pf", "Rk", "Of", "Df"],
+      "posteriorEsperada": { "1": 0.387, "0": 0.613 }
+    },
+    {
+      "id": "ex10-c-manta-markov",
+      "etiqueta": "P(G | Cl=1, Of=1, Df=0, Go=1, Cm=1) — Atajo por Manta de Markov MB(G)",
+      "descripcion": "Con toda la Manta de Markov MB(G) = {Cl, Of, Df, Go, Cm} observada, las 4 variables restantes quedan apantalladas.",
+      "variablesConsulta": ["G"],
+      "evidencia": { "Cl": "1", "Of": "1", "Df": "0", "Go": "1", "Cm": "1" },
+      "posteriorEsperada": { "1": 0.6778, "0": 0.3222 }
+    }
+  ]
+}
