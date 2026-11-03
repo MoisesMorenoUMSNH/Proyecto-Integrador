@@ -1,3 +1,4 @@
+//panel interferencia autor Leonardo Soria Raya
 import {
   BookOpen,
   Calculator,
