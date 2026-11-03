@@ -1,0 +1,94 @@
+/* Integración oficial de Tailwind CSS v4 con Vite y tokens académicos FIE-UMSNH */
+@import "tailwindcss";
+
+:root {
+  --color-superficie-base: #f8fafc;
+  --color-superficie-panel: #ffffff;
+  --color-superficie-secundaria: #f1f5f9;
+  --color-tinta-principal: #0f172a;
+  --color-tinta-secundaria: #334155;
+  --color-borde-sutil: #cbd5e1;
+  --color-acento-azul: #1d4ed8;
+  --color-acento-azul-suave: #dbeafe;
+  color-scheme: light;
+}
+
+html,
+body {
+  background-color: var(--color-superficie-base);
+  color: var(--color-tinta-principal);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  caret-color: var(--color-acento-azul);
+  scrollbar-color: #94a3b8 #f1f5f9;
+  scrollbar-width: thin;
+}
+
+::selection {
+  background-color: var(--color-acento-azul-suave);
+  color: var(--color-tinta-principal);
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-acento-azul);
+  outline-offset: 2px;
+}
+
+/* Tipografía tabular obligatoria para probabilidades, CPTs, factores y conteos */
+.numeros-tabulares {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ajustes limpios para fórmulas KaTeX dentro de tarjetas y tablas */
+.contenedor-katex .katex-display {
+  margin: 0.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* Ajustes sobrios sobre controles de @xyflow/react */
+.react-flow__attribution {
+  font-size: 10px;
+  color: #475569;
+  background: rgba(248, 250, 252, 0.85);
+}
+
+.solo-en-impresion {
+  display: none;
+}
+
+/* Reglas dedicadas de impresión académica para generación limpia de PDF */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 14mm 12mm;
+  }
+
+  html,
+  body,
+  #root {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10.5pt;
+  }
+
+  .ocultar-en-impresion {
+    display: none !important;
+  }
+
+  .solo-en-impresion {
+    display: block !important;
+  }
+
+  .evitar-corte-impresion {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

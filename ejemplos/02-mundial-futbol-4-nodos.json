@@ -1,0 +1,108 @@
+{
+  "versionEsquema": "1.0",
+  "metadatos": {
+    "id": "mundial-futbol-4-nodos",
+    "titulo": "Ejercicio 2: Mundial de Futbol (4 nodos)",
+    "descripcion": "Un analista deportivo modela el resultado de un partido del Mundial. La lesión del jugador estrella afecta la forma del equipo, y el resultado depende de la buena forma y de la fuerza del rival.",
+    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "dominio": "Deportes"
+  },
+  "nodos": [
+    {
+      "id": "L",
+      "nombre": "Lesión",
+      "descripcion": "El jugador estrella está lesionado",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 140, "y": 80 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.2, "0": 0.8 }
+        }
+      ]
+    },
+    {
+      "id": "R",
+      "nombre": "Rival fuerte",
+      "descripcion": "El rival es fuerte (top 8 del ranking)",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 460, "y": 80 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.5, "0": 0.5 }
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "nombre": "Buena forma",
+      "descripcion": "El equipo llega en buena forma al partido",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["L"],
+      "posicion": { "x": 140, "y": 240 },
+      "cpt": [
+        {
+          "cuando": { "L": "1" },
+          "probabilidades": { "1": 0.4, "0": 0.6 }
+        },
+        {
+          "cuando": { "L": "0" },
+          "probabilidades": { "1": 0.75, "0": 0.25 }
+        }
+      ]
+    },
+    {
+      "id": "G",
+      "nombre": "Gana",
+      "descripcion": "El equipo gana el partido",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["F", "R"],
+      "posicion": { "x": 300, "y": 400 },
+      "cpt": [
+        {
+          "cuando": { "F": "1", "R": "1" },
+          "probabilidades": { "1": 0.55, "0": 0.45 }
+        },
+        {
+          "cuando": { "F": "1", "R": "0" },
+          "probabilidades": { "1": 0.85, "0": 0.15 }
+        },
+        {
+          "cuando": { "F": "0", "R": "1" },
+          "probabilidades": { "1": 0.2, "0": 0.8 }
+        },
+        {
+          "cuando": { "F": "0", "R": "0" },
+          "probabilidades": { "1": 0.5, "0": 0.5 }
+        }
+      ]
+    }
+  ],
+  "consultasPredefinidas": [
+    {
+      "id": "ex2-a-predictiva-causal",
+      "etiqueta": "P(G | R=1) — Probabilidad de ganar contra un rival fuerte",
+      "descripcion": "El sorteo nos puso contra un rival fuerte (R=1). ¿Qué probabilidad hay de ganar el partido?",
+      "variablesConsulta": ["G"],
+      "evidencia": { "R": "1" },
+      "ordenSugerido": ["L", "F"],
+      "posteriorEsperada": { "1": 0.438, "0": 0.562 }
+    },
+    {
+      "id": "ex2-b-diagnostica",
+      "etiqueta": "P(L | G=0) — Diagnóstico de lesión tras perder el partido",
+      "descripcion": "El equipo no ganó el partido (G=0). ¿Qué tan probable es que el jugador estrella estuviera lesionado?",
+      "variablesConsulta": ["L"],
+      "evidencia": { "G": "0" },
+      "ordenSugerido": ["R", "F"],
+      "posteriorEsperada": { "1": 0.2476, "0": 0.7524 }
+    }
+  ]
+}

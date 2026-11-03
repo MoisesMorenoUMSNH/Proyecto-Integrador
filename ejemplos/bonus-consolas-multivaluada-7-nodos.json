@@ -1,0 +1,201 @@
+{
+  "versionEsquema": "1.0",
+  "metadatos": {
+    "id": "consolas-multivaluada-7-nodos",
+    "titulo": "Ejercicio 7: Venta de videojuegos en consolas actuales (7 nodos, Pl tri-valuada)",
+    "descripcion": "Un estudio analiza lanzamientos en PlayStation 5, Xbox Series X|S y Nintendo Switch 2. La variable Plataforma (Pl) es discreta multivaluada con 3 estados.",
+    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "dominio": "Industria de Videojuegos"
+  },
+  "nodos": [
+    {
+      "id": "X",
+      "nombre": "Exclusivo",
+      "descripcion": "El juego es exclusivo de una plataforma",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 80, "y": 60 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.3, "0": 0.7 }
+        }
+      ]
+    },
+    {
+      "id": "R",
+      "nombre": "Reseñas",
+      "descripcion": "El juego obtiene reseñas buenas de la crítica",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 280, "y": 60 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.45, "0": 0.55 }
+        }
+      ]
+    },
+    {
+      "id": "Mk",
+      "nombre": "Marketing",
+      "descripcion": "Campaña de marketing fuerte previa al lanzamiento",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 480, "y": 60 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.5, "0": 0.5 }
+        }
+      ]
+    },
+    {
+      "id": "Pl",
+      "nombre": "Plataforma",
+      "descripcion": "Plataforma principal del lanzamiento (variable discreta de 3 valores)",
+      "estados": ["PS5", "Xbox", "Switch 2"],
+      "etiquetasEstados": {
+        "PS5": "PlayStation 5",
+        "Xbox": "Xbox Series X|S",
+        "Switch 2": "Nintendo Switch 2"
+      },
+      "padres": [],
+      "posicion": { "x": 640, "y": 200 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": {
+            "PS5": 0.5,
+            "Xbox": 0.2,
+            "Switch 2": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "VL",
+      "nombre": "Ventas lanz.",
+      "descripcion": "Ventas de lanzamiento altas",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["X", "R", "Mk"],
+      "posicion": { "x": 280, "y": 200 },
+      "cpt": [
+        {
+          "cuando": { "X": "1", "R": "1", "Mk": "1" },
+          "probabilidades": { "1": 0.9, "0": 0.1 }
+        },
+        {
+          "cuando": { "X": "1", "R": "1", "Mk": "0" },
+          "probabilidades": { "1": 0.75, "0": 0.25 }
+        },
+        {
+          "cuando": { "X": "1", "R": "0", "Mk": "1" },
+          "probabilidades": { "1": 0.55, "0": 0.45 }
+        },
+        {
+          "cuando": { "X": "1", "R": "0", "Mk": "0" },
+          "probabilidades": { "1": 0.3, "0": 0.7 }
+        },
+        {
+          "cuando": { "X": "0", "R": "1", "Mk": "1" },
+          "probabilidades": { "1": 0.8, "0": 0.2 }
+        },
+        {
+          "cuando": { "X": "0", "R": "1", "Mk": "0" },
+          "probabilidades": { "1": 0.6, "0": 0.4 }
+        },
+        {
+          "cuando": { "X": "0", "R": "0", "Mk": "1" },
+          "probabilidades": { "1": 0.4, "0": 0.6 }
+        },
+        {
+          "cuando": { "X": "0", "R": "0", "Mk": "0" },
+          "probabilidades": { "1": 0.12, "0": 0.88 }
+        }
+      ]
+    },
+    {
+      "id": "VT",
+      "nombre": "1 millón",
+      "descripcion": "Ventas totales superan 1 millón de copias",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["VL", "Pl"],
+      "posicion": { "x": 460, "y": 340 },
+      "cpt": [
+        {
+          "cuando": { "VL": "1", "Pl": "PS5" },
+          "probabilidades": { "1": 0.85, "0": 0.15 }
+        },
+        {
+          "cuando": { "VL": "1", "Pl": "Xbox" },
+          "probabilidades": { "1": 0.65, "0": 0.35 }
+        },
+        {
+          "cuando": { "VL": "1", "Pl": "Switch 2" },
+          "probabilidades": { "1": 0.8, "0": 0.2 }
+        },
+        {
+          "cuando": { "VL": "0", "Pl": "PS5" },
+          "probabilidades": { "1": 0.25, "0": 0.75 }
+        },
+        {
+          "cuando": { "VL": "0", "Pl": "Xbox" },
+          "probabilidades": { "1": 0.1, "0": 0.9 }
+        },
+        {
+          "cuando": { "VL": "0", "Pl": "Switch 2" },
+          "probabilidades": { "1": 0.2, "0": 0.8 }
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "nombre": "DLC",
+      "descripcion": "Se lanza contenido descargable (DLC)",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["VT"],
+      "posicion": { "x": 460, "y": 480 },
+      "cpt": [
+        {
+          "cuando": { "VT": "1" },
+          "probabilidades": { "1": 0.75, "0": 0.25 }
+        },
+        {
+          "cuando": { "VT": "0" },
+          "probabilidades": { "1": 0.2, "0": 0.8 }
+        }
+      ]
+    }
+  ],
+  "consultasPredefinidas": [
+    {
+      "id": "ex7-a-diagnostica-trivaluada",
+      "etiqueta": "P(Pl | D=1) — Distribución posterior sobre las 3 plataformas dado DLC",
+      "descripcion": "Se lanzó un DLC (D=1). ¿En qué plataforma (PS5, Xbox o Switch 2) es más probable que haya salido principalmente el juego?",
+      "variablesConsulta": ["Pl"],
+      "evidencia": { "D": "1" },
+      "ordenSugerido": ["X", "R", "Mk", "VL", "VT"],
+      "posteriorEsperada": {
+        "PS5": 0.5289,
+        "Xbox": 0.1711,
+        "Switch 2": 0.3
+      }
+    },
+    {
+      "id": "ex7-b-mixta-xbox",
+      "etiqueta": "P(R | D=1, Mk=1, Pl=Xbox) — Inferencia mixta con evidencia multivaluada",
+      "descripcion": "El juego salió en Xbox con marketing fuerte y tuvo DLC. ¿Qué tan probable es que tuviera buenas reseñas?",
+      "variablesConsulta": ["R"],
+      "evidencia": { "D": "1", "Mk": "1", "Pl": "Xbox" },
+      "ordenSugerido": ["X", "VT", "VL"],
+      "posteriorEsperada": { "1": 0.5152, "0": 0.4848 }
+    }
+  ]
+}

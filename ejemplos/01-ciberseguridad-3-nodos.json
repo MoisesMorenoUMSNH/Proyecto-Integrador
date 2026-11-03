@@ -1,0 +1,85 @@
+{
+  "versionEsquema": "1.0",
+  "metadatos": {
+    "id": "ciberseguridad-3-nodos",
+    "titulo": "Ejercicio 1: Ciberseguridad — Cadena de Phishing (3 nodos)",
+    "descripcion": "Una empresa modela cómo un correo de phishing puede terminar en un acceso no autorizado: el phishing permite robar credenciales y las credenciales robadas permiten entrar al sistema (cadena P -> C -> A).",
+    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "dominio": "Ciberseguridad"
+  },
+  "nodos": [
+    {
+      "id": "P",
+      "nombre": "Phishing",
+      "descripcion": "Un empleado recibe un correo de phishing",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 250, "y": 50 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.3, "0": 0.7 }
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "nombre": "Credenciales",
+      "descripcion": "Le roban las credenciales al empleado",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["P"],
+      "posicion": { "x": 250, "y": 220 },
+      "cpt": [
+        {
+          "cuando": { "P": "1" },
+          "probabilidades": { "1": 0.4, "0": 0.6 }
+        },
+        {
+          "cuando": { "P": "0" },
+          "probabilidades": { "1": 0.02, "0": 0.98 }
+        }
+      ]
+    },
+    {
+      "id": "A",
+      "nombre": "Acceso",
+      "descripcion": "Hay un acceso no autorizado al sistema",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["C"],
+      "posicion": { "x": 250, "y": 390 },
+      "cpt": [
+        {
+          "cuando": { "C": "1" },
+          "probabilidades": { "1": 0.7, "0": 0.3 }
+        },
+        {
+          "cuando": { "C": "0" },
+          "probabilidades": { "1": 0.01, "0": 0.99 }
+        }
+      ]
+    }
+  ],
+  "consultasPredefinidas": [
+    {
+      "id": "ex1-a-predictiva-marginal",
+      "etiqueta": "P(A) — Probabilidad marginal de acceso no autorizado",
+      "descripcion": "¿Cuál es la probabilidad de que ocurra un acceso no autorizado sin evidencia previa?",
+      "variablesConsulta": ["A"],
+      "evidencia": {},
+      "ordenSugerido": ["P", "C"],
+      "posteriorEsperada": { "1": 0.1025, "0": 0.8975 }
+    },
+    {
+      "id": "ex1-b-diagnostica",
+      "etiqueta": "P(P | A=1) — Diagnóstico de phishing dado acceso no autorizado",
+      "descripcion": "Se detectó un acceso no autorizado. ¿Qué tan probable es que todo haya empezado con un correo de phishing?",
+      "variablesConsulta": ["P"],
+      "evidencia": { "A": "1" },
+      "ordenSugerido": ["C"],
+      "posteriorEsperada": { "1": 0.8374, "0": 0.1626 }
+    }
+  ]
+}

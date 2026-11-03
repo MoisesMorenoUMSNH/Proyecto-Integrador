@@ -1,0 +1,154 @@
+{
+  "versionEsquema": "1.0",
+  "metadatos": {
+    "id": "ransomware-6-nodos",
+    "titulo": "Ejercicio 5: Ciberseguridad — Infección por Ransomware (6 nodos)",
+    "descripcion": "Un equipo de respuesta a incidentes modela una infección por ransomware con dos causas (phishing y parches atrasados), dos señales directas (cifrado y tráfico C2) y pérdida de datos derivada del cifrado.",
+    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "dominio": "Ciberseguridad"
+  },
+  "nodos": [
+    {
+      "id": "P",
+      "nombre": "Phishing",
+      "descripcion": "Un usuario abrió un adjunto de phishing",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 180, "y": 60 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.3, "0": 0.7 }
+        }
+      ]
+    },
+    {
+      "id": "V",
+      "nombre": "Sin parches",
+      "descripcion": "El sistema tiene parches de seguridad atrasados",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": [],
+      "posicion": { "x": 460, "y": 60 },
+      "cpt": [
+        {
+          "cuando": {},
+          "probabilidades": { "1": 0.4, "0": 0.6 }
+        }
+      ]
+    },
+    {
+      "id": "I",
+      "nombre": "Infección",
+      "descripcion": "El equipo está infectado con ransomware",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["P", "V"],
+      "posicion": { "x": 320, "y": 200 },
+      "cpt": [
+        {
+          "cuando": { "P": "1", "V": "1" },
+          "probabilidades": { "1": 0.85, "0": 0.15 }
+        },
+        {
+          "cuando": { "P": "1", "V": "0" },
+          "probabilidades": { "1": 0.5, "0": 0.5 }
+        },
+        {
+          "cuando": { "P": "0", "V": "1" },
+          "probabilidades": { "1": 0.3, "0": 0.7 }
+        },
+        {
+          "cuando": { "P": "0", "V": "0" },
+          "probabilidades": { "1": 0.02, "0": 0.98 }
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "nombre": "Cifrado",
+      "descripcion": "Se detectan archivos cifrados en el equipo",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["I"],
+      "posicion": { "x": 180, "y": 340 },
+      "cpt": [
+        {
+          "cuando": { "I": "1" },
+          "probabilidades": { "1": 0.8, "0": 0.2 }
+        },
+        {
+          "cuando": { "I": "0" },
+          "probabilidades": { "1": 0.03, "0": 0.97 }
+        }
+      ]
+    },
+    {
+      "id": "T",
+      "nombre": "Tráfico C2",
+      "descripcion": "Tráfico hacia un servidor de comando y control (C2)",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["I"],
+      "posicion": { "x": 460, "y": 340 },
+      "cpt": [
+        {
+          "cuando": { "I": "1" },
+          "probabilidades": { "1": 0.7, "0": 0.3 }
+        },
+        {
+          "cuando": { "I": "0" },
+          "probabilidades": { "1": 0.05, "0": 0.95 }
+        }
+      ]
+    },
+    {
+      "id": "L",
+      "nombre": "Pérdida",
+      "descripcion": "Hubo pérdida efectiva de datos",
+      "estados": ["1", "0"],
+      "etiquetasEstados": { "1": "Sí", "0": "No" },
+      "padres": ["C"],
+      "posicion": { "x": 180, "y": 480 },
+      "cpt": [
+        {
+          "cuando": { "C": "1" },
+          "probabilidades": { "1": 0.6, "0": 0.4 }
+        },
+        {
+          "cuando": { "C": "0" },
+          "probabilidades": { "1": 0.01, "0": 0.99 }
+        }
+      ]
+    }
+  ],
+  "consultasPredefinidas": [
+    {
+      "id": "ex5-a-diagnostica-doble",
+      "etiqueta": "P(I | T=1, L=1) — Diagnóstico de infección con tráfico C2 y pérdida",
+      "descripcion": "Se observa tráfico hacia un servidor C2 y pérdida de datos. ¿Qué tan probable es la infección?",
+      "variablesConsulta": ["I"],
+      "evidencia": { "T": "1", "L": "1" },
+      "ordenSugerido": ["P", "V", "C"],
+      "posteriorEsperada": { "1": 0.9898, "0": 0.0102 }
+    },
+    {
+      "id": "ex5-b-diagnostica-con-poda",
+      "etiqueta": "P(V | L=1) — Diagnóstico de parches atrasados con poda del nodo T",
+      "descripcion": "Solo sabemos que hubo pérdida de datos (L=1). El nodo hoja T no observado se poda automáticamente.",
+      "variablesConsulta": ["V"],
+      "evidencia": { "L": "1" },
+      "ordenSugerido": ["P", "I", "C"],
+      "posteriorEsperada": { "1": 0.6092, "0": 0.3908 }
+    },
+    {
+      "id": "ex5-c-manta-markov",
+      "etiqueta": "P(I | P=0, V=1, C=1, T=0) — Atajo por Manta de Markov MB(I)",
+      "descripcion": "Al observar completa la Manta de Markov MB(I) = {P, V, C, T}, la variable L resulta condicionalmente independiente de I.",
+      "variablesConsulta": ["I"],
+      "evidencia": { "P": "0", "V": "1", "C": "1", "T": "0" },
+      "posteriorEsperada": { "1": 0.783, "0": 0.217 }
+    }
+  ]
+}
