@@ -1,10 +1,11 @@
+
 {
   "versionEsquema": "1.0",
   "metadatos": {
     "id": "videojuegos-5-nodos",
     "titulo": "Ejercicio 3: Venta de videojuegos en consolas (5 nodos)",
     "descripcion": "Una editora analiza un lanzamiento en tiendas digitales de consola. Las ventas de la primera semana dependen de descuento, reseñas y tráiler viral; las ventas altas impulsan la entrada al Top 10.",
-    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "autor": "Cesar Ambris Salguero",
     "dominio": "Industria de Videojuegos"
   },
   "nodos": [
