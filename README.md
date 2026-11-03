@@ -205,15 +205,15 @@ El sistema almacena y transfiere redes en archivos `.json` normalizados bajo el 
 
 ## 9. Créditos y Equipo de Desarrollo
 
-Este software fue desarrollado como proyecto integrador para la materia de **Modelos Probabilistas**, correspondiente al programa de Ingeniería en Computación de la **Facultad de Ingeniería Eléctrica (FIE)** en la **Universidad Michoacana de San Nicolás de Hidalgo (UMSNH)**.
+Este software fue desarrollado como proyecto integrador para la materia de Modelos Probabilistas, correspondiente al programa de Ingeniería en Computación de la Facultad de Ingeniería Eléctrica (FIE) en la Universidad Michoacana de San Nicolás de Hidalgo (UMSNH).
 
 ### Integrantes y División de Responsabilidades
 
 | Integrante | Rol | Responsabilidades y Contribuciones Técnicas |
 | :--- | :--- | :--- |
-| **Moisés P. C.** | **Líder Técnico & Arquitectura** | Arquitectura desacoplada del sistema, motor matemático de factores multidimensionales, implementación del algoritmo de Eliminación de Variables (6 pasos), motor de enumeración exhaustiva y gestión del estado global con Zustand (`useStoreRed.ts`). |
-| **César Ambris Salguero** | **Desarrollo Frontend & Reportes** | Diseño y maquetación de paneles visuales (`BarraSuperior.tsx`, `PanelEditor.tsx`), maquetación de vista imprimible y exportación a PDF/Markdown (`VistaReporte.tsx`), y diseño de modelos probabilistas de 5 y 6 nodos (Videojuegos y Ransomware). |
-| **Leonardo Soria Raya** | **Persistencia, Validadores & Modelado** | Esquemas de serialización JSON con Zod, validadores de probabilidad total y aciclicidad, utilidades del sistema (`descargarArchivo.ts`), y diseño de modelos probabilistas de 4, 7 (multivaluado) y 10 nodos (Mundial de Fútbol). |
+| **Moisés Moreno Cortez** | Líder Técnico & Arquitectura | Arquitectura desacoplada del sistema, motor matemático de factores multidimensionales, implementación del algoritmo de Eliminación de Variables (6 pasos), motor de enumeración exhaustiva y gestión del estado global con Zustand (`useStoreRed.ts`). Despliegue CI/CD automatizado en GitHub Pages. |
+| **César Ambris Salguero** | Desarrollo Frontend, Reportes & Modelado | Diseño y maquetación de paneles visuales (`BarraSuperior.tsx`, `PanelEditor.tsx`), vista imprimible de memoria de cálculo con fórmulas KaTeX (`VistaReporte.tsx`), revisión del flujo de inferencia (`eliminacionVariables.ts`) y modelado de redes bayesianas de 5 y 6 nodos (Videojuegos y Ransomware). |
+| **Leonardo Soria Raya** | Interfaz Visual, Grafos & Modelado | Maquetación visual e interacción del panel de inferencia (`PanelInferencia.tsx`), renderizado y estilos de nodos personalizados en el lienzo de React Flow (`NodoGrafo.tsx`), visualización tabular de matrices probabilistas (`TablaFactor.tsx`), tipado de inferencia (`tipoInferencia.ts`) y diseño de modelos probabilistas de 4, 7 (multivaluado) y 10 nodos (Mundial de Fútbol). |
 
 ---
 
