@@ -1,3 +1,4 @@
+// Vista del reporte desarrollado por Cesar Ambris Salguero 
 import { ArrowLeft, Download, Printer } from 'lucide-react';
 import {
   formatearNumeroAcademico,
