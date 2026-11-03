@@ -1,3 +1,4 @@
+//Tipo interferencia.ts Leonardo Soria Raya
 import type {
   AsignacionVariables,
   IdNodo,
