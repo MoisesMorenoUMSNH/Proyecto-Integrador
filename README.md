@@ -3,7 +3,7 @@
 > **Materia:** Modelos Probabilistas  
 > **Institución:** Facultad de Ingeniería Eléctrica (FIE) · Universidad Michoacana de San Nicolás de Hidalgo (UMSNH)  
 > **Profesor:** Mauricio Rene Reyes Gutierrez
-> **Versión:** 1.0.0 (Parte 1: Modelado, Validación e Inferencia Exacta)
+
 
 ---
 
