@@ -219,4 +219,4 @@ Este software fue desarrollado como proyecto integrador para la materia de Model
 
 ### Licencia y Uso Académico
 
-Este proyecto ha sido desarrollado con fines exclusivamente académicos y de divulgación científica bajo licencia **MIT**. Se autoriza su consulta, modificación y réplica citando debidamente la fuente original y la institución educativa.
+Este proyecto ha sido desarrollado con fines exclusivamente académicos.
