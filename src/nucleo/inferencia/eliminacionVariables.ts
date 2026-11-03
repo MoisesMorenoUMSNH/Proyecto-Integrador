@@ -1,3 +1,4 @@
+//inferencia Cesar Ambris Salguero 
 import { construirClaveAsignacion } from '../dominio/cpt';
 import type {
   AsignacionVariables,
