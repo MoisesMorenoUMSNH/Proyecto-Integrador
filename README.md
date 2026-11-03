@@ -213,7 +213,7 @@ Este software fue desarrollado como proyecto integrador para la materia de **Mod
 | :--- | :--- | :--- |
 | **Moisés P. C.** | **Líder Técnico & Arquitectura** | Arquitectura desacoplada del sistema, motor matemático de factores multidimensionales, implementación del algoritmo de Eliminación de Variables (6 pasos), motor de enumeración exhaustiva y gestión del estado global con Zustand (`useStoreRed.ts`). |
 | **César Ambris Salguero** | **Desarrollo Frontend & Reportes** | Diseño y maquetación de paneles visuales (`BarraSuperior.tsx`, `PanelEditor.tsx`), maquetación de vista imprimible y exportación a PDF/Markdown (`VistaReporte.tsx`), y diseño de modelos probabilistas de 5 y 6 nodos (Videojuegos y Ransomware). |
-| **(Nombre del Tercer Integrante)** | **Persistencia, Validadores & Modelado** | Esquemas de serialización JSON con Zod, validadores de probabilidad total y aciclicidad, utilidades del sistema (`descargarArchivo.ts`), y diseño de modelos probabilistas de 4, 7 (multivaluado) y 10 nodos (Mundial de Fútbol). |
+| **Leonardo Soria Raya** | **Persistencia, Validadores & Modelado** | Esquemas de serialización JSON con Zod, validadores de probabilidad total y aciclicidad, utilidades del sistema (`descargarArchivo.ts`), y diseño de modelos probabilistas de 4, 7 (multivaluado) y 10 nodos (Mundial de Fútbol). |
 
 ---
 
