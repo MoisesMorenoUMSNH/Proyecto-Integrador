@@ -4,7 +4,7 @@
     "id": "ciberseguridad-3-nodos",
     "titulo": "Ejercicio 1: Ciberseguridad — Cadena de Phishing (3 nodos)",
     "descripcion": "Una empresa modela cómo un correo de phishing puede terminar en un acceso no autorizado: el phishing permite robar credenciales y las credenciales robadas permiten entrar al sistema (cadena P -> C -> A).",
-    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "autor": "Moises Moreno Cortez",
     "dominio": "Ciberseguridad"
   },
   "nodos": [
