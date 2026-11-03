@@ -4,7 +4,7 @@
     "id": "mundial-octavos-10-nodos",
     "titulo": "Ejercicio 10: Mundial de Futbol — Octavos de Final (10 nodos)",
     "descripcion": "Un cuerpo técnico modela el partido de octavos de final del Mundial: cuatro causas raíz (lesión, ranking, preparación física y clima) determinan ataque y defensa; estos y el clima determinan victoria, goles, tarjeta roja y ventas récord de camisetas.",
-    "autor": "Modelos Probabilistas · FIE-UMSNH",
+    "autor": "Leonardo Soria Raya",
     "dominio": "Deportes"
   },
   "nodos": [

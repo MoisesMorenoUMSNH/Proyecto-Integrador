@@ -1,3 +1,4 @@
+//Nodo grafo Leonardo Soria Raya
 import { Handle, Position, type Node, type NodeProps } from '@xyflow/react';
 import { CircleDot, Eye, Scissors, Target } from 'lucide-react';
 import { memo } from 'react';
@@ -143,3 +144,4 @@ function ComponenteNodoGrafo({ data }: NodeProps<NodoFlujoGrafo>) {
 }
 
 export const NodoGrafo = memo(ComponenteNodoGrafo);
+

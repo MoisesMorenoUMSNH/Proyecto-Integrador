@@ -1,3 +1,4 @@
+//Tabla Factor Autor Leonardo Soria Raya
 import { formatearNumeroAcademico, type Factor } from '../nucleo';
 
 export interface PropiedadesTablaFactor {
